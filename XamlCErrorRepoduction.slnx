@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="XamlCErrorReproductionLibrary/XamlCErrorReproductionLibrary.csproj" />
+  <Project Path="XamlCErrorRepoduction/XamlCErrorRepoduction.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>
