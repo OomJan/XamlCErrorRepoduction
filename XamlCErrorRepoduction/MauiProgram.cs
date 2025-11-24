@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using XamlCErrorReproductionLibrary;
 
 namespace XamlCErrorRepoduction
 {
@@ -19,10 +20,19 @@ namespace XamlCErrorRepoduction
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
+            MauiCommunityTookitUnlinkProtection();
+
             return builder.Build();
+        }
+
+    private static void MauiCommunityTookitUnlinkProtection()
+        {
+            // Forciert das die Toolkit Bibliothek nicht weg optimiert wird selbst wenn auf diese in XAML drauf zugegriffen wird!
+            var tInitToolkit = new CommunityToolkit.Maui.Core.SnackbarOptions();
+            tInitToolkit.BackgroundColor = null;
         }
     }
 }

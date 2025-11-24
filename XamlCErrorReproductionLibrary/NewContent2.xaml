@@ -4,6 +4,11 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              BackgroundColor="Transparent"
              x:Name="Root">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
     <ContentView.Content>
         <Grid Padding="0,0,5,0" WidthRequest="250">
             <Grid.RowDefinitions>
@@ -19,7 +24,7 @@
                     </Image>
                     <Label Text="{Binding NormalNotation, Source={x:Reference Root}}" Margin="6,0,0,0"
                            VerticalTextAlignment="Center"
-                           WidthRequest="190" LineBreakMode="WordWrap" MaxLines="2" />
+                           WidthRequest="190" LineBreakMode="WordWrap" MaxLines="2" IsVisible="{Binding SomeBool, Source={x:Reference Root}, Converter={StaticResource InvertedBoolConverter}}"/>
                 </StackLayout>
             </Border>
         </Grid>
