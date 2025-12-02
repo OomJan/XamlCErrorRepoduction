@@ -1,3 +1,5 @@
+using CommunityToolkit.Maui.Converters;
+
 namespace Test;
 
 // Adding Compile causes: "XamlC error : We only support xmlns aggregation in http://schemas.microsoft.com/dotnet/maui/global" when "xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"" is included in the control.
@@ -12,14 +14,11 @@ public partial class NewContent2 : ContentView
 		InitializeComponent();
 
         MauiCommunityTookitUnlinkProtection();
-
     }
 
     public void MauiCommunityTookitUnlinkProtection()
     {
-        // Forciert das die Toolkit Bibliothek nicht weg optimiert wird selbst wenn auf diese in XAML drauf zugegriffen wird!
-        var tInitToolkit = new CommunityToolkit.Maui.Core.SnackbarOptions();
-        tInitToolkit.BackgroundColor = null;
+        var tYouShallLink = new InvertedBoolConverter();
     }
 
     public string NormalNotation
@@ -28,9 +27,9 @@ public partial class NewContent2 : ContentView
         set => SetValue(NormalNotationProperty, value);
     }
 
-    public string SomeBool
+    public bool SomeBool
     {
-        get => (string)GetValue(SomeBoolProperty);
+        get => (bool)GetValue(SomeBoolProperty);
         set => SetValue(SomeBoolProperty, value);
     }
 }
